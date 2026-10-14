@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Dinner Decider helps you find recipes and decide what to make for dinner.">
+    <meta name="author" content="Katlin Denney">
+    <title>Dinner Decider</title>
+
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/larger.css">
+    <script type="module" src="scripts/main.js"></script>
+</head>
+<body>
+    <header>
+    <nav aria-label="Main navigation">
+        <a href="index.html" class="logo">Dinner Decider</a>
+
+        <button type="button" id="menu-button" aria-label="Open navigation menu">
+            ☰
+        </button>
+
+        <ul id="nav-links">
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="favorites.html">Favorites</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section class="hero">
+        <h1>What's for Dinner?</h1>
+
+        <p>
+            Find dinner ideas without the stressing about what to make!
+        </p>
+
+        <form id="search-form">
+            <label for="meal-search">Search for a meal</label>
+
+            <input
+                type="search"
+                id="meal-search"
+                name="meal-search"
+                placeholder="Try chicken, pasta, curry..."
+                required
+            >
+
+            <button type="submit">Search</button>
+        </form>
+
+        <button type="button" id="random-button">
+            Surprise Me!
+        </button>
+    </section>
+    <section class="filters">
+    <h2>Find The Right Dinner</h2>
+
+    <div class="filter-controls">
+        <div>
+            <label for="ingredient-filter">Main Ingredient</label>
+            <input
+                type="text"
+                id="ingredient-filter"
+                placeholder="Chicken, tofu, beef, salmon, this is an ingredient list placeholder..."
+            >
+        </div>
+
+        <div>
+            <label for="category-filter">Category</label>
+            <select id="category-filter">
+                <option value="">All Categories</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="region-filter">Region</label>
+            <select id="region-filter">
+                <option value="">All Regions</option>
+            </select>
+        </div>
+    </div>
+    <section class="recipe-section">
+        <h2>Dinner Ideas</h2>
+
+        <p id="status-message" aria-live="polite"></p>
+
+        <div id="recipe-container" class="recipe-grid">
+            <!-- Recipe cards will be created with JS -->
+        </div>
+    </section>
+</section> 
+</main>
+<footer>
+    <p>
+        &copy; <span id="current-year"></span> Dinner Decider
+    </p>
+
+    <p>
+        Recipes From TheMealDB API
+        Nutrition information From USDA FoodData Central API
+    </p>
+</footer>
+</body>
+</html>
