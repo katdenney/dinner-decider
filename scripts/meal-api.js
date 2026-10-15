@@ -26,3 +26,62 @@ export async function getRandomMeal() {
 
     return data.meals?.[0] ?? null;
 }
+//Meal Categories
+export async function getCategories() {
+    const response = await fetch(`${BASE_URL}/list.php?c=list`);
+
+    if (!response.ok) {
+        throw new Error("Unable to retrieve categories.");
+    }
+
+    // Parse
+    const data = await response.json();
+
+    return data.meals ?? [];
+}
+
+// Meal Regions
+export async function getRegions() {
+    const response = await fetch(`${BASE_URL}/list.php?a=list`);
+
+    if (!response.ok) {
+        throw new Error("Unable to retrieve regions.");
+    }
+
+    // Parse
+    const data = await response.json();
+
+    return data.meals ?? [];
+}
+
+// MealCategory
+export async function getMealsByCategory(category) {
+    const response = await fetch(
+        `${BASE_URL}/filter.php?c=${encodeURIComponent(category)}`
+    );
+
+    if (!response.ok) {
+        throw new Error("Unable to retrieve category.");
+    }
+
+    // Parse
+    const data = await response.json();
+
+    return data.meals ?? [];
+}
+
+// Meal Region
+export async function getMealsByRegion(region) {
+    const response = await fetch(
+        `${BASE_URL}/filter.php?a=${encodeURIComponent(region)}`
+    );
+
+    if (!response.ok) {
+        throw new Error("Unable to retrieve region.");
+    }
+
+    // Parse
+    const data = await response.json();
+
+    return data.meals ?? [];
+}
