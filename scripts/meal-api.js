@@ -26,7 +26,7 @@ export async function getRandomMeal() {
 
     return data.meals?.[0] ?? null;
 }
-//Meal Categories
+/*Meal Categories*/
 export async function getCategories() {
     const response = await fetch(`${BASE_URL}/list.php?c=list`);
 
@@ -40,7 +40,7 @@ export async function getCategories() {
     return data.meals ?? [];
 }
 
-// Meal Regions
+/*Meal Regions*/
 export async function getRegions() {
     const response = await fetch(`${BASE_URL}/list.php?a=list`);
 
@@ -54,7 +54,7 @@ export async function getRegions() {
     return data.meals ?? [];
 }
 
-// MealCategory
+/*Meal Categories*/
 export async function getMealsByCategory(category) {
     const response = await fetch(
         `${BASE_URL}/filter.php?c=${encodeURIComponent(category)}`
@@ -70,7 +70,7 @@ export async function getMealsByCategory(category) {
     return data.meals ?? [];
 }
 
-// Meal Region
+/*Meal Region*/
 export async function getMealsByRegion(region) {
     const response = await fetch(
         `${BASE_URL}/filter.php?a=${encodeURIComponent(region)}`
@@ -80,7 +80,7 @@ export async function getMealsByRegion(region) {
         throw new Error("Unable to retrieve region.");
     }
 
-    // Parse
+    /*Parse*/
     const data = await response.json();
 
     return data.meals ?? [];
