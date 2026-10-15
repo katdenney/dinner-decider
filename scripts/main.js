@@ -4,7 +4,8 @@ import {
     getCategories,
     getRegions,
     getMealsByCategory,
-    getMealsByRegion
+    getMealsByRegion,
+    getMealsByIngredient
 } from "./meal-api.js";
 
 /*elements*/
@@ -18,6 +19,7 @@ const categoryFilter = document.querySelector("#category-filter");
 const regionFilter = document.querySelector("#region-filter");
 const menuButton = document.querySelector("#menu-button");
 const navLinks = document.querySelector("#nav-links");
+const ingredientFilter = document.querySelector("#ingredient-filter");
 
 /*get year*/
 currentYear.textContent = new Date().getFullYear();
@@ -164,6 +166,24 @@ menuButton.addEventListener("click", () => {
         menuButton.getAttribute("aria-expanded") === "true";
 
     menuButton.setAttribute("aria-expanded", String(!expanded));
+});
+/*ingredient*/
+ingredientFilter.addEventListener("change", async () => {
+    const ingredient = ingredientFilter.value.trim();
+
+    if (!ingredient) {
+        return;
+    }
+
+    statusMessage.textContent = "Finding recipes...";
+
+    try {
+        const meals = await getMealsByIngredient(ingredient);
+        displayMeals(meals);
+    } catch {
+        statusMessage.textContent =
+            "You might be hungry! Ingredient recipes could not be loaded.";
+    }
 });
 
 /*initialize*/

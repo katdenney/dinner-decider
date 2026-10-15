@@ -85,3 +85,17 @@ export async function getMealsByRegion(region) {
 
     return data.meals ?? [];
 }
+/*ingredient*/
+export async function getMealsByIngredient(ingredient) {
+    const response = await fetch(
+        `${BASE_URL}/filter.php?i=${encodeURIComponent(ingredient)}`
+    );
+
+    if (!response.ok) {
+        throw new Error("Unable to retrieve ingredient recipes.");
+    }
+
+    const data = await response.json();
+
+    return data.meals ?? [];
+}
