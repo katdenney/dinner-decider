@@ -1,0 +1,252 @@
+/*global*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #292929;
+    background-color: #fff8ed;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+/*header/navigation*/
+header {
+    background-color: #b84032;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.logo {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#menu-button {
+    float: right;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 1.6rem;
+}
+
+#nav-links {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: none;
+}
+
+#nav-links.open {
+    display: block;
+}
+
+#nav-links li {
+    margin: 0.75rem 0;
+}
+
+#nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+#nav-links a:hover {
+    text-decoration: underline;
+}
+/*Main*/
+main {
+    width: min(100% - 2rem, 1200px);
+    margin: 0 auto;
+}
+
+/*Hero*/
+
+.hero {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.hero h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+    color: #b84032;
+}
+
+.hero p {
+    margin-bottom: 2rem;
+}
+
+#search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 500px;
+    margin: 0 auto 1rem;
+}
+
+#search-form label {
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #777;
+    border-radius: 6px;
+    background-color: white;
+}
+
+button {
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #b84032;
+    color: white;
+    font-weight: bold;
+
+    /* Advanced CSS: transition */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #923228;
+
+    /* Advanced CSS: transform */
+    transform: translateY(-2px);
+}
+
+#random-button {
+    background-color: #657a52;
+}
+
+#random-button:hover {
+    background-color: #4f603f;
+}
+
+/*Filters*/
+
+.filters {
+    padding: 2rem 0;
+}
+
+.filters h2 {
+    text-align: center;
+}
+
+.filter-controls {
+    display: grid;
+    gap: 1rem;
+}
+
+.filter-controls label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+}
+
+/*Recipe Section*/
+
+.recipe-section {
+    padding: 2rem 0;
+}
+
+.recipe-section h2 {
+    text-align: center;
+}
+
+#status-message {
+    text-align: center;
+    min-height: 1.5rem;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+/*
+    JavaScript will create elements
+    with the recipe-card class.
+*/
+
+.recipe-card {
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+
+    /* animation */
+    animation: card-enter 0.4s ease;
+
+    /* transition */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recipe-card:hover {
+    /* hover transform */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgb(0 0 0 / 20%);
+}
+
+.recipe-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.recipe-card-content {
+    padding: 1rem;
+}
+
+.recipe-card h3 {
+    margin-top: 0;
+}
+
+/*Animation */
+
+@keyframes card-enter {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*Footer*/
+
+footer { margin-top: 3rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: #292929;
+    color: white;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
