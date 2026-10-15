@@ -60,6 +60,33 @@ function displayMeals(meals) {
         recipeContainer.append(card);
     });
 }
+/*storage*/
+function savePreferences() {
+    const preferences = {
+        search: searchInput.value,
+        ingredient: ingredientFilter.value,
+        category: categoryFilter.value,
+        region: regionFilter.value
+    };
+
+    localStorage.setItem(
+        "dinnerPreferences",
+        JSON.stringify(preferences)
+    );
+}
+/*restore*/
+function loadPreferences() {
+    const saved = localStorage.getItem("dinnerPreferences");
+
+    if (!saved) {
+        return;
+    }
+
+    const preferences = JSON.parse(saved);
+
+    searchInput.value = preferences.search ?? "";
+    ingredientFilter.value = preferences.ingredient ?? "";
+}
 /*load filters*/
 async function loadFilters() {
     try {
@@ -91,6 +118,8 @@ searchForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const searchTerm = searchInput.value.trim();
+    /*save*/
+    savePreferences();
 
     if (!searchTerm) {
         return;
@@ -106,6 +135,7 @@ searchForm.addEventListener("submit", async (event) => {
             "Sorry, recipes could not be loaded.";
     }
 });
+
 /*event 2 click*/
 randomButton.addEventListener("click", async () => {
     statusMessage.textContent = "Choosing your dinner...";
@@ -124,6 +154,8 @@ randomButton.addEventListener("click", async () => {
 /*event 3 category*/
 categoryFilter.addEventListener("change", async () => {
     const category = categoryFilter.value;
+    /*save*/
+    savePreferences();
 
     if (!category) {
         return;
@@ -188,4 +220,5 @@ ingredientFilter.addEventListener("change", async () => {
 
 /*initialize*/
 loadFilters();
+loadPreferences();
 
