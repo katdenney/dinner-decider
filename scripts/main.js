@@ -86,6 +86,8 @@ function loadPreferences() {
 
     searchInput.value = preferences.search ?? "";
     ingredientFilter.value = preferences.ingredient ?? "";
+    categoryFilter.value = preferences.category ?? "";
+    regionFilter.value = preferences.region ?? "";
 }
 /*load filters*/
 async function loadFilters() {
@@ -113,7 +115,7 @@ async function loadFilters() {
     }
 }
 /*events*/
-/*event 1 submit*/
+/*event 1 search -submit*/
 searchForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -136,7 +138,7 @@ searchForm.addEventListener("submit", async (event) => {
     }
 });
 
-/*event 2 click*/
+/*event 2 random -click*/
 randomButton.addEventListener("click", async () => {
     statusMessage.textContent = "Choosing your dinner...";
 
@@ -175,6 +177,8 @@ categoryFilter.addEventListener("change", async () => {
 /*event 4 region*/
 regionFilter.addEventListener("change", async () => {
     const region = regionFilter.value;
+    /*save*/
+    savePreferences();
 
     if (!region) {
         return;
@@ -202,6 +206,8 @@ menuButton.addEventListener("click", () => {
 /*ingredient*/
 ingredientFilter.addEventListener("change", async () => {
     const ingredient = ingredientFilter.value.trim();
+    /*save*/
+    savePreferences();
 
     if (!ingredient) {
         return;
@@ -219,6 +225,10 @@ ingredientFilter.addEventListener("change", async () => {
 });
 
 /*initialize*/
-loadFilters();
-loadPreferences();
+async function initialize() {
+    await loadFilters();
+    loadPreferences();
+}
+
+initialize();
 
